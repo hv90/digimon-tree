@@ -1,0 +1,521 @@
+export const digimonTypeSample = {
+  id: 81,
+  name: "Palmon",
+  xAntibody: false,
+  images: [
+    {
+      href: "https://digi-api.com/images/digimon/w/Palmon.png",
+      transparent: false,
+    },
+  ],
+  levels: [{ id: 4, level: "Child" }],
+  types: [{ id: 19, type: "Plant" }],
+  attributes: [
+    { id: 1, attribute: "Data" },
+    { id: 4, attribute: "Vaccine" },
+  ],
+  fields: [
+    {
+      id: 10,
+      field: "Jungle Troopers",
+      image: "https://digi-api.com/images/etc/fields/Jungle_Troopers.png",
+    },
+    {
+      id: 2,
+      field: "Nature Spirits",
+      image: "https://digi-api.com/images/etc/fields/Nature_Spirits.png",
+    },
+    {
+      id: 7,
+      field: "Wind Guardians",
+      image: "https://digi-api.com/images/etc/fields/Wind_Guardians.png",
+    },
+  ],
+  releaseDate: "1998",
+  descriptions: [
+    {
+      origin: "reference_book",
+      language: "jap",
+      description:
+        "頭にトロピカルな花を咲かせた植物型デジモン。タネモンから爬虫類的に進化したが、外見や特性上から植物型と分類される珍しいタイプ。昼間は花と葉の様な腕を広げ光合成をしている。普段は地中に根の様な足を埋め、養分を吸っているが、歩行することも可能。頭部の花は、楽しい時や嬉しい時は甘い香りを漂わせ、怒った時や危険を感じた時は大型デジモンも逃げ出すほどの臭い匂いを放出する。必殺技は強烈な毒性を帯びたツタを敵に絡ませる『ポイズンアイビー』。この攻撃を受けると体が麻痺してしまう。",
+    },
+    {
+      origin: "reference_book",
+      language: "en_us",
+      description:
+        "A Plant Digimon with a tropical flower blooming on its head. Although it evolved like a reptile from Tanemon, it is an unusual Type which is classified as a Plant based on its outward appearances and special qualities. During the day it opens up the flower and spreads its leaf-like arms to perform photosynthesis. It usually buries its root-like feet under the ground, and although it is absorbing nutrients, it is also able to walk. As for the flower on its head, when it is joyful or happy it will waft about a sweet fragrance, but when it is angered or senses danger, it releases a foul stench that will drive off even large Digimon. Its Special Move is entangling the opponent in ivy laced with a powerful toxin (Poison Ivy). If you suffer this attack, your body will be completely paralyzed.",
+    },
+  ],
+  skills: [
+    {
+      id: 342,
+      skill: "Poison Ivy",
+      translation: "",
+      description:
+        "Extends its fingers to entangle the opponent in ivy laced with a powerful toxin, paralyzing them.",
+    },
+    {
+      id: 343,
+      skill: "Plant Shock",
+      translation: "",
+      description:
+        "Hit the opponent with leaves, claws them, or showers them with poisonous pollen.",
+    },
+    {
+      id: 344,
+      skill: "Kusai Nioi",
+      translation: "Stinky Stench",
+      description:
+        "Gives off a powerful stench that makes Digimon unwilling to fight it.",
+    },
+    {
+      id: 345,
+      skill: "Totemo Kusai Nioi",
+      translation: "Very Stinky Stench",
+      description: "Blows out a powerful poisonous smoke.",
+    },
+    {
+      id: 346,
+      skill: "Thorn Throw",
+      translation: "",
+      description: "Impales the opponent with its vines before throwing them.",
+    },
+    {
+      id: 347,
+      skill: "Sleep Spore",
+      translation: "",
+      description:
+        "Shakes its petals, which releases spores that can put Digimon to sleep.",
+    },
+    {
+      id: 348,
+      skill: "Thorn Thrust",
+      translation: "",
+      description: "Stabs upwards with its extended fingers.",
+    },
+    {
+      id: 349,
+      skill: "Nioi Kougeki",
+      translation: "Stench Attack",
+      description: "Releases a foul stench.",
+    },
+    {
+      id: 350,
+      skill: "Root Stretch",
+      translation: "",
+      description: "Slashes a foe with its claws.",
+    },
+    {
+      id: 251,
+      skill: "Poison Powder",
+      translation: "",
+      description: "Spreads a cloud of poisonous powder from its wings.",
+    },
+  ],
+  priorEvolutions: [
+    {
+      id: 814,
+      digimon: "Budmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Budmon.png",
+      url: "https://digi-api.com/api/v1/digimon/814",
+    },
+    {
+      id: 798,
+      digimon: "Kyaromon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Kyaromon.png",
+      url: "https://digi-api.com/api/v1/digimon/798",
+    },
+    {
+      id: 225,
+      digimon: "Pyocomon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Pyocomon.png",
+      url: "https://digi-api.com/api/v1/digimon/225",
+    },
+    {
+      id: 84,
+      digimon: "Tanemon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Tanemon.png",
+      url: "https://digi-api.com/api/v1/digimon/84",
+    },
+    {
+      id: 95,
+      digimon: "Yuramon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Yuramon.png",
+      url: "https://digi-api.com/api/v1/digimon/95",
+    },
+  ],
+  nextEvolutions: [
+    {
+      id: 3,
+      digimon: "Angemon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Angemon.png",
+      url: "https://digi-api.com/api/v1/digimon/3",
+    },
+    {
+      id: 5,
+      digimon: "Birdramon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Birdramon.png",
+      url: "https://digi-api.com/api/v1/digimon/5",
+    },
+    {
+      id: 22,
+      digimon: "Numemon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Numemon.png",
+      url: "https://digi-api.com/api/v1/digimon/22",
+    },
+    {
+      id: 27,
+      digimon: "Vegimon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Vegimon.png",
+      url: "https://digi-api.com/api/v1/digimon/27",
+    },
+    {
+      id: 28,
+      digimon: "Whamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Whamon.png",
+      url: "https://digi-api.com/api/v1/digimon/28",
+    },
+    {
+      id: 29,
+      digimon: "Yukidarumon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Yukidarumon.png",
+      url: "https://digi-api.com/api/v1/digimon/29",
+    },
+    {
+      id: 43,
+      digimon: "Centalmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Centalmon.png",
+      url: "https://digi-api.com/api/v1/digimon/43",
+    },
+    {
+      id: 45,
+      digimon: "Coelamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Coelamon.png",
+      url: "https://digi-api.com/api/v1/digimon/45",
+    },
+    {
+      id: 60,
+      digimon: "Leomon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Leomon.png",
+      url: "https://digi-api.com/api/v1/digimon/60",
+    },
+    {
+      id: 72,
+      digimon: "Mojyamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Mojyamon.png",
+      url: "https://digi-api.com/api/v1/digimon/72",
+    },
+    {
+      id: 74,
+      digimon: "Nanimon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Nanimon.png",
+      url: "https://digi-api.com/api/v1/digimon/74",
+    },
+    {
+      id: 78,
+      digimon: "Orgemon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Orgemon.png",
+      url: "https://digi-api.com/api/v1/digimon/78",
+    },
+    {
+      id: 802,
+      digimon: "Algomon (Perfect)",
+      condition: "with Wizarmon and Wendimon",
+      image: "https://digi-api.com/images/digimon/w/Algomon_(Perfect).png",
+      url: "https://digi-api.com/api/v1/digimon/802",
+    },
+    {
+      id: 266,
+      digimon: "Ankylomon",
+      condition: "with Armadimon and Pawn Chessmon White",
+      image: "https://digi-api.com/images/digimon/w/Ankylomon.png",
+      url: "https://digi-api.com/api/v1/digimon/266",
+    },
+    {
+      id: 267,
+      digimon: "Aquilamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Aquilamon.png",
+      url: "https://digi-api.com/api/v1/digimon/267",
+    },
+    {
+      id: 41,
+      digimon: "Bakemon",
+      condition: "Death Evolution",
+      image: "https://digi-api.com/images/digimon/w/Bakemon.png",
+      url: "https://digi-api.com/api/v1/digimon/41",
+    },
+    {
+      id: 157,
+      digimon: "Dokugumon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Dokugumon.png",
+      url: "https://digi-api.com/api/v1/digimon/157",
+    },
+    {
+      id: 547,
+      digimon: "Fairimon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Fairimon.png",
+      url: "https://digi-api.com/api/v1/digimon/547",
+    },
+    {
+      id: 548,
+      digimon: "Fangmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Fangmon.png",
+      url: "https://digi-api.com/api/v1/digimon/548",
+    },
+    {
+      id: 164,
+      digimon: "Fugamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Fugamon.png",
+      url: "https://digi-api.com/api/v1/digimon/164",
+    },
+    {
+      id: 234,
+      digimon: "Geremon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Geremon.png",
+      url: "https://digi-api.com/api/v1/digimon/234",
+    },
+    {
+      id: 475,
+      digimon: "Growmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Growmon.png",
+      url: "https://digi-api.com/api/v1/digimon/475",
+    },
+    {
+      id: 252,
+      digimon: "Igamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Igamon.png",
+      url: "https://digi-api.com/api/v1/digimon/252",
+    },
+    {
+      id: 255,
+      digimon: "Jungle Mojyamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Jungle_Mojyamon.png",
+      url: "https://digi-api.com/api/v1/digimon/255",
+    },
+    {
+      id: 259,
+      digimon: "Kiwimon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Kiwimon.png",
+      url: "https://digi-api.com/api/v1/digimon/259",
+    },
+    {
+      id: 632,
+      digimon: "Kougamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Kougamon.png",
+      url: "https://digi-api.com/api/v1/digimon/632",
+    },
+    {
+      id: 127,
+      digimon: "Kuwagamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Kuwagamon.png",
+      url: "https://digi-api.com/api/v1/digimon/127",
+    },
+    {
+      id: 1192,
+      digimon: "Meicoomon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Meicoomon.png",
+      url: "https://digi-api.com/api/v1/digimon/1192",
+    },
+    {
+      id: 174,
+      digimon: "Mori Shellmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Mori_Shellmon.png",
+      url: "https://digi-api.com/api/v1/digimon/174",
+    },
+    {
+      id: 690,
+      digimon: "Palmon (X-Antibody)",
+      condition: "with or without X-Antibody",
+      image: "https://digi-api.com/images/digimon/w/Palmon_(X-Antibody).png",
+      url: "https://digi-api.com/api/v1/digimon/690",
+    },
+    {
+      id: 1341,
+      digimon: "Parasaurmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Parasaurmon.png",
+      url: "https://digi-api.com/api/v1/digimon/1341",
+    },
+    {
+      id: 366,
+      digimon: "Ponchomon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Ponchomon.png",
+      url: "https://digi-api.com/api/v1/digimon/366",
+    },
+    {
+      id: 105,
+      digimon: "Raremon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Raremon.png",
+      url: "https://digi-api.com/api/v1/digimon/105",
+    },
+    {
+      id: 226,
+      digimon: "Red Vegimon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Red_Vegimon.png",
+      url: "https://digi-api.com/api/v1/digimon/226",
+    },
+    {
+      id: 790,
+      digimon: "Reppamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Reppamon.png",
+      url: "https://digi-api.com/api/v1/digimon/790",
+    },
+    {
+      id: 228,
+      digimon: "Rosemon",
+      condition: "Warp Evolution",
+      image: "https://digi-api.com/images/digimon/w/Rosemon.png",
+      url: "https://digi-api.com/api/v1/digimon/228",
+    },
+    {
+      id: 108,
+      digimon: "Sukamon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Sukamon.png",
+      url: "https://digi-api.com/api/v1/digimon/108",
+    },
+    {
+      id: 388,
+      digimon: "Sheepmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Sheepmon.png",
+      url: "https://digi-api.com/api/v1/digimon/388",
+    },
+    {
+      id: 1109,
+      digimon: "Shoutmon X7(Superior Mode)",
+      condition: "with Every Digimon from the Digital World",
+      image:
+        "https://digi-api.com/images/digimon/w/Shoutmon_X7(Superior_Mode).png",
+      url: "https://digi-api.com/api/v1/digimon/1109",
+    },
+    {
+      id: 189,
+      digimon: "Snimon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Snimon.png",
+      url: "https://digi-api.com/api/v1/digimon/189",
+    },
+    {
+      id: 337,
+      digimon: "Submarimon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Submarimon.png",
+      url: "https://digi-api.com/api/v1/digimon/337",
+    },
+    {
+      id: 833,
+      digimon: "Sunflowmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Sunflowmon.png",
+      url: "https://digi-api.com/api/v1/digimon/833",
+    },
+    {
+      id: 693,
+      digimon: "Tailmon (X-Antibody)",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Tailmon_(X-Antibody).png",
+      url: "https://digi-api.com/api/v1/digimon/693",
+    },
+    {
+      id: 195,
+      digimon: "Togemon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Togemon.png",
+      url: "https://digi-api.com/api/v1/digimon/195",
+    },
+    {
+      id: 696,
+      digimon: "Togemon (X-Antibody)",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Togemon_(X-Antibody).png",
+      url: "https://digi-api.com/api/v1/digimon/696",
+    },
+    {
+      id: 197,
+      digimon: "Tuchidarumon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Tuchidarumon.png",
+      url: "https://digi-api.com/api/v1/digimon/197",
+    },
+    {
+      id: 90,
+      digimon: "Tuskmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Tuskmon.png",
+      url: "https://digi-api.com/api/v1/digimon/90",
+    },
+    {
+      id: 355,
+      digimon: "Witchmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Witchmon.png",
+      url: "https://digi-api.com/api/v1/digimon/355",
+    },
+    {
+      id: 206,
+      digimon: "Wizarmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Wizarmon.png",
+      url: "https://digi-api.com/api/v1/digimon/206",
+    },
+    {
+      id: 207,
+      digimon: "Woodmon",
+      condition: "",
+      image: "https://digi-api.com/images/digimon/w/Woodmon.png",
+      url: "https://digi-api.com/api/v1/digimon/207",
+    },
+  ],
+};
+
+type Primitive<T> = T extends string
+  ? string
+  : T extends number
+  ? number
+  : T extends boolean
+  ? boolean
+  : T extends Array<infer U>
+  ? Array<Primitive<U>>
+  : T extends object
+  ? { [K in keyof T]: Primitive<T[K]> }
+  : T;
+
+export type TDigimon = Primitive<typeof digimonTypeSample>;
+
+export type TDigiVolution = Primitive<typeof digimonTypeSample.nextEvolutions>;
