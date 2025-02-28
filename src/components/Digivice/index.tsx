@@ -128,13 +128,13 @@ const Digivice: React.FC<{
     <div className="flex items-center justify-center w-full md:w-5/6 h-full">
       <div className="relative max-h-[calc(100vh-200px)]">
         <Image
-          className="w-[clamp(250px,_100%,_300px)] xl:w-full"
+          className="landscape:w-auto w-[clamp(250px,_100%,_300px)] xl:w-full"
           style={{ maxHeight: "inherit" }}
           alt="digivice"
           src={digivice}
         />
         <div
-          className="w-[clamp(250px,_100%,_300px)] xl:w-full absolute top-0 "
+          className="landscape:w-auto w-[clamp(250px,_100%,_300px)] xl:w-full absolute top-0 "
           style={{ maxHeight: "inherit" }}
         >
           <Image className="w-full invisible" alt="digivice" src={digivice} />
