@@ -192,7 +192,7 @@ const Test: React.FC = () => {
           </div> */}
         </div>
       </div>
-      <div className="absolute md:bottom-0 w-full md:w-1/6 h-1/3 md:h-2/3 flex items-start md:items-end select-none">
+      <div className="absolute md:bottom-0 w-full md:w-1/6 2xl:w-1/4 h-1/3 xl:h-1/2 flex items-start md:items-end select-none">
         <div className="w-full h-2/3" ref={playerDivRef} id="player" />
       </div>
     </div>
