@@ -2946,7 +2946,7 @@ graceful-fs@^4.2.4, graceful-fs@^4.2.9:
 
 graph-ui@./graph-ui-v1.0.0.tgz:
   version "1.0.0"
-  resolved "./graph-ui-v1.0.0.tgz#5f01301ad36dc1cce4f4f7916c55934e0f3bfce0"
+  resolved "./graph-ui-v1.0.0.tgz#ce7d95a5cbf90c9f821a979e520bbdf8e7fc16a9"
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     keycharm "^0.4.0"

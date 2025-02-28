@@ -27,6 +27,54 @@ const Test: React.FC = () => {
 
   const playerDivRef = useRef<HTMLDivElement>(null);
 
+  const onClickHandler = (clickedNodeId: number) => {
+    if (clickedNodeId) {
+      const url = new URL(window.location.origin);
+      url.searchParams.append("id", clickedNodeId.toString());
+      router.push(url.toString());
+      const result = digimonShortData.find(
+        (digimonData) => digimonData.id.toString() === clickedNodeId.toString()
+      );
+      if (result) setCurrentDigimonName(result.name);
+
+      setDigimonId(clickedNodeId.toString());
+      setTimeout(() => {
+        setEvolution(null);
+      }, 500);
+    }
+  };
+
+  const onBlurHandler = () => {
+    const container = document.getElementById("mynetwork");
+    if (container) {
+      container.style.cursor = "default";
+    }
+    // setEvolution(null);
+  };
+
+  const onHoverHandler = (hoveredNodeId: number) => {
+    if (digimonResults) {
+      const container = document.getElementById("mynetwork");
+      if (container) {
+        container.style.cursor = "pointer";
+      }
+
+      const evolution = (
+        filterEvolutionDirection === "next"
+          ? digimonResults.nextEvolutions
+          : digimonResults.priorEvolutions
+      ).find((digimon) => digimon.id === hoveredNodeId);
+
+      setEvolution(
+        evolution
+          ? {
+              condition: evolution.condition,
+              digimon: evolution.digimon,
+            }
+          : null
+      );
+    }
+  };
 
   useEffect(() => {
     // toggleTheme(() => {
@@ -38,65 +86,25 @@ const Test: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full relative bg-foreground dark:bg-black">
-      <div className="w-full flex justify-center">
+    <div className="w-full h-full md:max-h-[calc(100vh-200px)] relative bg-foreground dark:bg-black">
+      <div className="w-full h-full flex flex-col-reverse md:flex-row md:justify-center">
         {isLoading ? (
           <div className="animate-pulse w-3/4">
             <div className="bg-gray-300 h-full w-full"></div>
           </div>
         ) : (
-          <div className="circuit w-3/4">
+          <div className="circuit w-full md:w-1/2 xl:w-3/4 h-1/2 md:h-full">
             {digimonResults && (
               <custom-graph
                 key={
                   digimonResults.name + filterEvolutionDirection + isDarkMode
                 }
                 class="h-full w-3/4"
-                fnHover={(hoveredNodeId) => {
-                  const container = document.getElementById("mynetwork");
-                  if (container) {
-                    container.style.cursor = "pointer";
-                  }
-
-                  const evolution = (
-                    filterEvolutionDirection === "next"
-                      ? digimonResults.nextEvolutions
-                      : digimonResults.priorEvolutions
-                  ).find((digimon) => digimon.id === hoveredNodeId);
-
-                  setEvolution(
-                    evolution
-                      ? {
-                          condition: evolution.condition,
-                          digimon: evolution.digimon,
-                        }
-                      : null
-                  );
-                }}
-                fnBlur={() => {
-                  const container = document.getElementById("mynetwork");
-                  if (container) {
-                    container.style.cursor = "default";
-                  }
-                  // setEvolution(null);
-                }}
-                fnClick={(clickedNodeId) => {
-                  if (clickedNodeId) {
-                    const url = new URL(window.location.origin);
-                    url.searchParams.append("id", clickedNodeId.toString());
-                    router.push(url.toString());
-                    const result = digimonShortData.find(
-                      (digimonData) =>
-                        digimonData.id.toString() === clickedNodeId.toString()
-                    );
-                    if (result) setCurrentDigimonName(result.name);
-
-                    setDigimonId(clickedNodeId.toString());
-                    setTimeout(() => {
-                      setEvolution(null);
-                    }, 500);
-                  }
-                }}
+                fnHover={onHoverHandler}
+                fnTouchStart={onHoverHandler}
+                fnBlur={onBlurHandler}
+                fnTouchEnd={onBlurHandler}
+                fnClick={onClickHandler}
                 nodes={[
                   {
                     id: 0,
@@ -163,7 +171,7 @@ const Test: React.FC = () => {
             )}
           </div>
         )}
-        <div className="relative w-1/4 h-1/3 flex flex-wrap items-start select-none">
+        <div className="w-full md:w-1/2 xl:w-1/4 h-1/2 md:h-full flex justify-center items-center select-none">
           <Digivice
             digimonResults={digimonResults}
             evolutionFilter={filterEvolutionDirection}
@@ -184,7 +192,7 @@ const Test: React.FC = () => {
           </div> */}
         </div>
       </div>
-      <div className="absolute bottom-0 w-1/6 h-2/3 flex items-end select-none">
+      <div className="absolute md:bottom-0 w-full md:w-1/6 h-1/3 md:h-2/3 flex items-start md:items-end select-none">
         <div className="w-full h-2/3" ref={playerDivRef} id="player" />
       </div>
     </div>

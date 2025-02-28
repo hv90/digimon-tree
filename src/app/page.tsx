@@ -23,7 +23,7 @@ export default function Home() {
         <Header>
           <Search />
         </Header>
-        <main className="w-full">
+        <main className="w-full h-full pb-8 row-start-2">
           <Test />
         </main>
       </DigimonContextProvider>

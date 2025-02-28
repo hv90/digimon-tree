@@ -4,7 +4,7 @@ import logo from "@/assets/img/logo.png";
 
 const Header: React.FC<{ children?: ReactNode }> = ({ children }) => {
   return (
-    <header className="w-full row-start-1 my-2 py-2 flex items-center">
+    <header className="w-full h-5/6 row-start-1 my-2 py-2 flex items-center">
       <Image
         style={{ width: "6%", borderRadius: "12%", marginRight: "2%" }}
         src={logo}

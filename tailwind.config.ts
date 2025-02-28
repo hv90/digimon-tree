@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        portrait: { raw: "(max-width: 1024px) and (orientation: portrait)" },
+        landscape: { raw: "(max-width: 1024px) and (orientation: landscape)" },
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
