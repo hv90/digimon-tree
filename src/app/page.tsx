@@ -11,7 +11,7 @@ import Search from "@/components/Search";
 export default function Home() {
   const [queryClient] = useState(() => new QueryClient());
 
-  const Test = dynamic(() => import("../components/Test"), { ssr: false });
+  const Results = dynamic(() => import("../components/Results"), { ssr: false });
 
   useEffect(() => {
     defineCustomElements(window);
@@ -24,7 +24,7 @@ export default function Home() {
           <Search />
         </Header>
         <main className="w-full h-full pb-8 row-start-2">
-          <Test />
+          <Results />
         </main>
       </DigimonContextProvider>
     </QueryClientProvider>

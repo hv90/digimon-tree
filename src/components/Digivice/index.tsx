@@ -19,9 +19,11 @@ import {
 import { RefObject, useState } from "react";
 import { useYouTubePlayer } from "@/hooks/useYoutubeIframeApi";
 import { Fade, Tooltip } from "@mui/material";
-import "./style.css";
 import { TDigimon } from "@/types/digimon";
 import { useDigimonContext } from "@/contexts/DigimonContext";
+import lightModePicture from "@/assets/img/Meramon.png";
+import darkModePicture from "@/assets/img/Starmon.png";
+import { toggleTheme } from "@/utils/theme";
 
 const Digivice: React.FC<{
   playerDivRef: RefObject<HTMLDivElement | null>;
@@ -39,7 +41,8 @@ const Digivice: React.FC<{
   const { playVideo, pauseVideo, nextVideo, previousVideo } =
     useYouTubePlayer(playerDivRef);
 
-  const { evolution, setEvolution } = useDigimonContext();
+  const { evolution, setEvolution, setIsDarkMode, isDarkMode } =
+    useDigimonContext();
 
   const [musicCount, setMusicCount] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -124,8 +127,13 @@ const Digivice: React.FC<{
     nextVideo();
   };
 
+  console.log('dark mode: ', isDarkMode)
+
   return (
-    <div className="flex items-center justify-center w-full md:w-5/6 h-full">
+    <div
+      key={isDarkMode + ""}
+      className="flex items-center justify-center w-full md:w-5/6 h-full"
+    >
       <div className="relative max-h-[calc(100vh-200px)]">
         <Image
           className="landscape:w-auto w-[clamp(250px,_100%,_300px)] xl:w-full"
@@ -304,7 +312,7 @@ const Digivice: React.FC<{
             }}
             variant={"default"}
             size={"icon"}
-            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-color-black"
+            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-green-foreground"
             onClick={() => {
               setEvolution(null);
               setDigiviceInfoFilter("main");
@@ -323,7 +331,7 @@ const Digivice: React.FC<{
             }}
             variant={"default"}
             size={"icon"}
-            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-color-black"
+            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-green-foreground"
             onClick={() => {
               setEvolution(null);
               setDigiviceInfoFilter("fields");
@@ -342,7 +350,7 @@ const Digivice: React.FC<{
             }}
             variant={"default"}
             size={"icon"}
-            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-color-black"
+            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-green-foreground"
             onClick={() => {
               setEvolution(null);
               setDigiviceInfoFilter("description");
@@ -363,7 +371,7 @@ const Digivice: React.FC<{
             }}
             variant={"default"}
             size={"icon"}
-            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-color-black"
+            className="bg-blue-100 hover:bg-blue-100 opacity-70 hover:opacity-75 absolute overflow-hidden flex justify-center text-green-foreground"
             onClick={() => {
               setEvolution(null);
               setDigiviceInfoFilter("skills");
@@ -372,6 +380,7 @@ const Digivice: React.FC<{
           >
             4
           </Button>
+
           <Button
             style={{
               bottom: "25.3%",
@@ -432,6 +441,7 @@ const Digivice: React.FC<{
               />
             </ButtonMask>
           </Button>
+
           <Button
             onClick={handlePlayPauseAction}
             style={{
@@ -456,11 +466,11 @@ const Digivice: React.FC<{
               }}
             >
               <>
-                <Fade className="absolute !size-1/4" in={!isPlaying}>
+                <Fade className="absolute text-white !size-1/4" in={!isPlaying}>
                   <Play />
                 </Fade>
 
-                <Fade className="absolute !size-1/4" in={isPlaying}>
+                <Fade className="absolute text-white !size-1/4" in={isPlaying}>
                   <Pause />
                 </Fade>
               </>
@@ -488,7 +498,7 @@ const Digivice: React.FC<{
                 height: "100%",
               }}
             >
-              <SkipBack className="!size-1/3" />
+              <SkipBack className="!size-1/3 text-white" />
             </ButtonMask>
           </Button>
           <Button
@@ -513,7 +523,66 @@ const Digivice: React.FC<{
                 height: "100%",
               }}
             >
-              <SkipForward className="!size-1/3" />
+              <SkipForward className="!size-1/3 text-white" />
+            </ButtonMask>
+          </Button>
+
+          <Button
+            disabled={isDarkMode}
+            onClick={() => {
+              toggleTheme(() => {
+                setIsDarkMode(true);
+              });
+            }}
+            style={{
+              bottom: "4.1%",
+              left: "34.25%",
+              // aspectRatio: 1,
+              width: "11%",
+              height: "6%",
+            }}
+            variant={"default"}
+            size={"icon"}
+            className="absolute overflow-hidden  opacity-70 hover:opacity-75 flex justify-center rounded-full"
+          >
+            <ButtonMask
+              className="absolute items-center"
+              style={{
+                // aspectRatio: 1,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image alt="dark mode" src={darkModePicture} />
+            </ButtonMask>
+          </Button>
+          <Button
+            disabled={!isDarkMode}
+            onClick={() => {
+              toggleTheme(() => {
+                setIsDarkMode(false);
+              });
+            }}
+            style={{
+              bottom: "4.1%",
+              right: "34.25%",
+              // aspectRatio: 1,
+              width: "11%",
+              height: "6%",
+            }}
+            variant={"default"}
+            size={"icon"}
+            className="absolute overflow-hidden  opacity-70 hover:opacity-75 flex justify-center rounded-full"
+          >
+            <ButtonMask
+              className="absolute items-center"
+              style={{
+                // aspectRatio: 1,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image alt="dark mode" src={lightModePicture} />
             </ButtonMask>
           </Button>
         </div>

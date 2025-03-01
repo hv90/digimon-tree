@@ -9,13 +9,13 @@ import Digivice from "../Digivice";
 import "./style.css";
 import { toggleTheme } from "@/utils/theme";
 
-const Test: React.FC = () => {
+const Results: React.FC = () => {
   const {
     digimonResults,
     setDigimonId,
     setCurrentDigimonName,
-    isDarkMode,
     setIsDarkMode,
+    isDarkMode,
     setEvolution,
     isLoading,
     setIsLoading,
@@ -77,10 +77,19 @@ const Test: React.FC = () => {
   };
 
   useEffect(() => {
-    // toggleTheme(() => {
-    //   setIsDarkMode(!isDarkMode);
-    // });
+    const localTheme = localStorage.getItem("theme");
+
     setTimeout(() => {
+      if (localTheme && localTheme === "dark") {
+        console.log('hello dark?')
+        toggleTheme(() => {
+          setIsDarkMode(true);
+        });
+      } else {
+        toggleTheme(() => {
+          setIsDarkMode(false);
+        });
+      }
       setIsLoading(false);
     }, 500);
   }, []);
@@ -199,4 +208,4 @@ const Test: React.FC = () => {
   );
 };
 
-export default Test;
+export default Results;
