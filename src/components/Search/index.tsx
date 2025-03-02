@@ -47,7 +47,7 @@ const Search: React.FC<{
         renderInput={(params) => {
           return (
             <TextField
-              className="h-[calc(60%-8px)]"
+              className="h-[clamp(36px,41px,46px)] md:h-[clamp(60px,calc(60%-8px),90px)]"
               {...params}
               label="Digimon"
             />

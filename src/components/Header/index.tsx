@@ -8,7 +8,7 @@ const Header: React.FC<{ children?: ReactNode }> = ({ children }) => {
   const { isLoading, setIsLoading } = useDigimonContext();
 
   return (
-    <header className="w-full h-5/6 row-start-1 my-2 py-2 flex items-center">
+    <header className="my-4 md:mt-0 w-full md:h-full row-start-1 flex items-center">
       {isLoading ? (
         <div className="animate-pulse w-[clamp(70px,6%,100px)] h-[58%] mr-[2%]">
           <div className="bg-gray-100 rounded-[12%] h-full w-full"></div>
@@ -17,9 +17,8 @@ const Header: React.FC<{ children?: ReactNode }> = ({ children }) => {
         <Link
           href={"/"}
           onClick={() => {
-            setIsLoading(true);
             setTimeout(() => {
-              setIsLoading(false);
+              window.location.reload();
             }, 500);
           }}
           style={{

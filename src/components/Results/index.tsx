@@ -94,7 +94,7 @@ const Results: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full md:max-h-[calc(100vh-200px)] relative bg-foreground dark:bg-black">
+    <div className="w-full h-full grid grid-rows-[1fr_200px] md:block md:max-h-[calc(100vh-200px)] relative bg-foreground dark:bg-black">
       <div className="w-full h-full flex flex-col-reverse md:flex-row md:justify-center">
         {isLoading ? (
           <div className="animate-pulse w-3/4">
@@ -203,7 +203,7 @@ const Results: React.FC = () => {
           )}
         </div>
       </div>
-      <div className="absolute md:bottom-0 w-full md:w-1/6 2xl:w-1/4 h-1/3 xl:h-1/2 flex items-start md:items-end select-none">
+      <div className="absolute bottom-[-110px] md:bottom-0 w-full md:w-1/6 2xl:w-1/4 h-1/3 xl:h-1/2 flex items-start md:items-end select-none">
         <div className="w-full h-2/3" ref={playerDivRef} id="player" />
       </div>
     </div>

@@ -56,11 +56,9 @@ const Digivice: React.FC<{
   const MAX_IMAGES_COUNT = 6;
 
   const handleLoadedImagesCounting = (imageId: string) => {
-    console.log("image id: ", imageId, ", loaded images: ", loadedImages.size);
     if (loadedImages.size < MAX_IMAGES_COUNT - 1) {
       loadedImages.add(imageId);
     } else {
-      console.log("loading is false now");
       setIsLoading(false);
     }
   };
@@ -142,7 +140,7 @@ const Digivice: React.FC<{
 
   return (
     <div
-      key={isDarkMode + ""}
+      // key={isDarkMode + ""}
       className="flex items-center justify-center w-full md:w-5/6 h-full"
     >
       <div className="relative max-h-[calc(100vh-200px)]">
@@ -150,25 +148,27 @@ const Digivice: React.FC<{
           onLoad={() => {
             handleLoadedImagesCounting("img-" + 1);
           }}
-          className="landscape:w-auto w-[clamp(250px,_100%,_300px)] xl:w-full"
+          className="landscape:w-auto w-[clamp(200px,_100%,_300px)] xl:w-full"
           style={{ maxHeight: "inherit" }}
           alt="digivice"
           src={digivice}
+          priority
         />
         <div
-          className="landscape:w-auto w-[clamp(250px,_100%,_300px)] xl:w-full absolute top-0 "
+          className="landscape:w-auto w-[clamp(200px,_100%,_300px)] xl:w-full absolute top-0 "
           style={{ maxHeight: "inherit" }}
         >
           <Image
             onLoad={() => {
               handleLoadedImagesCounting("img-" + 2);
             }}
+            style={{ maxHeight: "inherit" }}
             className="w-full invisible"
             alt="digivice"
             src={digivice}
           />
           <div className="h-full w-full absolute top-0 z-2">
-            <div className="w-full invisible bg-yellow-300 h-1/3" />
+            <div className="w-full invisible h-1/3" />
             <div className="w-1/2 m-auto h-1/3">
               <div className="w-full h-4/6">
                 <div className="w-full 2xl:text-lg text-black text-center font-mono max-h-full overflow-x-hidden overflow-y-auto overscroll-none scrollbar scrollbar-thumb-blue-100 scrollbar-track-transparent xl:text-xs 2xl:text-lg">
