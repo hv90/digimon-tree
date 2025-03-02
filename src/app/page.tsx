@@ -26,6 +26,7 @@ export default function Home() {
         <main className="w-full h-full pb-8 row-start-2">
           <Results />
         </main>
+        <footer></footer>
       </DigimonContextProvider>
     </QueryClientProvider>
   );

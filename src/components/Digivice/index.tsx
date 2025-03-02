@@ -41,9 +41,10 @@ const Digivice: React.FC<{
   const { playVideo, pauseVideo, nextVideo, previousVideo } =
     useYouTubePlayer(playerDivRef);
 
-  const { evolution, setEvolution, setIsDarkMode, isDarkMode } =
+  const { evolution, setEvolution, setIsDarkMode, isDarkMode, setIsLoading } =
     useDigimonContext();
 
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [musicCount, setMusicCount] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -51,6 +52,18 @@ const Digivice: React.FC<{
   const [digiviceInfoFilter, setDigiviceInfoFilter] = useState<
     "main" | "fields" | "description" | "skills"
   >("main");
+
+  const MAX_IMAGES_COUNT = 6;
+
+  const handleLoadedImagesCounting = (imageId: string) => {
+    console.log("image id: ", imageId, ", loaded images: ", loadedImages.size);
+    if (loadedImages.size < MAX_IMAGES_COUNT - 1) {
+      loadedImages.add(imageId);
+    } else {
+      console.log("loading is false now");
+      setIsLoading(false);
+    }
+  };
 
   const isSpeakingCheck = () => {
     if (isSpeaking) {
@@ -127,8 +140,6 @@ const Digivice: React.FC<{
     nextVideo();
   };
 
-  console.log('dark mode: ', isDarkMode)
-
   return (
     <div
       key={isDarkMode + ""}
@@ -136,6 +147,9 @@ const Digivice: React.FC<{
     >
       <div className="relative max-h-[calc(100vh-200px)]">
         <Image
+          onLoad={() => {
+            handleLoadedImagesCounting("img-" + 1);
+          }}
           className="landscape:w-auto w-[clamp(250px,_100%,_300px)] xl:w-full"
           style={{ maxHeight: "inherit" }}
           alt="digivice"
@@ -145,12 +159,19 @@ const Digivice: React.FC<{
           className="landscape:w-auto w-[clamp(250px,_100%,_300px)] xl:w-full absolute top-0 "
           style={{ maxHeight: "inherit" }}
         >
-          <Image className="w-full invisible" alt="digivice" src={digivice} />
+          <Image
+            onLoad={() => {
+              handleLoadedImagesCounting("img-" + 2);
+            }}
+            className="w-full invisible"
+            alt="digivice"
+            src={digivice}
+          />
           <div className="h-full w-full absolute top-0 z-2">
             <div className="w-full invisible bg-yellow-300 h-1/3" />
             <div className="w-1/2 m-auto h-1/3">
               <div className="w-full h-4/6">
-                <div className="w-full text-black text-center font-mono max-h-full overflow-x-hidden overflow-y-auto overscroll-none scrollbar scrollbar-thumb-blue-100 scrollbar-track-transparent xl:text-xs 2xl:text-lg">
+                <div className="w-full 2xl:text-lg text-black text-center font-mono max-h-full overflow-x-hidden overflow-y-auto overscroll-none scrollbar scrollbar-thumb-blue-100 scrollbar-track-transparent xl:text-xs 2xl:text-lg">
                   {evolution === null && (
                     <>
                       <p>
@@ -236,8 +257,15 @@ const Digivice: React.FC<{
                       {digiviceInfoFilter === "fields" && (
                         <div className="flex justify-center flex-wrap">
                           {digimonResults?.fields.map((field) => (
-                            <Tooltip title={field.field} key={field.id}>
-                              <div className=" h-1/3 flex justify-center">
+                            <Tooltip
+                              title={
+                                <>
+                                  <p className="2xl:text-xl">{field.field}</p>
+                                </>
+                              }
+                              key={field.id}
+                            >
+                              <div className="h-1/3 flex justify-center">
                                 <img
                                   className=" h-1/3 mr-3 mb-3"
                                   src={field.image}
@@ -404,6 +432,9 @@ const Digivice: React.FC<{
               }}
             >
               <Image
+                onLoad={() => {
+                  handleLoadedImagesCounting("img-" + 3);
+                }}
                 className="object-cover"
                 unoptimized
                 alt="button"
@@ -434,6 +465,9 @@ const Digivice: React.FC<{
               }}
             >
               <Image
+                onLoad={() => {
+                  handleLoadedImagesCounting("img-" + 4);
+                }}
                 className="object-cover"
                 unoptimized
                 alt="button"
@@ -526,65 +560,112 @@ const Digivice: React.FC<{
               <SkipForward className="!size-1/3 text-white" />
             </ButtonMask>
           </Button>
+          <Tooltip
+            title={
+              <div className="bg-dark-foreground flex flex-col items-center">
+                <p className="xl:text-2xl">Dark mode</p>
+                <Image
+                  className="rounded-full max-w-[33%]"
+                  alt="dark mode"
+                  src={darkModePicture}
+                />
+              </div>
+            }
+          >
+            <Button
+              disabled={isDarkMode}
+              onClick={() => {
+                toggleTheme(() => {
+                  setIsLoading(true);
+                  setIsDarkMode(true);
 
-          <Button
-            disabled={isDarkMode}
-            onClick={() => {
-              toggleTheme(() => {
-                setIsDarkMode(true);
-              });
-            }}
-            style={{
-              bottom: "4.1%",
-              left: "34.25%",
-              // aspectRatio: 1,
-              width: "11%",
-              height: "6%",
-            }}
-            variant={"default"}
-            size={"icon"}
-            className="absolute overflow-hidden  opacity-70 hover:opacity-75 flex justify-center rounded-full"
-          >
-            <ButtonMask
-              className="absolute items-center"
-              style={{
-                // aspectRatio: 1,
-                width: "100%",
-                height: "100%",
+                  setTimeout(() => {
+                    setIsLoading(false);
+                  }, 500);
+                });
               }}
-            >
-              <Image alt="dark mode" src={darkModePicture} />
-            </ButtonMask>
-          </Button>
-          <Button
-            disabled={!isDarkMode}
-            onClick={() => {
-              toggleTheme(() => {
-                setIsDarkMode(false);
-              });
-            }}
-            style={{
-              bottom: "4.1%",
-              right: "34.25%",
-              // aspectRatio: 1,
-              width: "11%",
-              height: "6%",
-            }}
-            variant={"default"}
-            size={"icon"}
-            className="absolute overflow-hidden  opacity-70 hover:opacity-75 flex justify-center rounded-full"
-          >
-            <ButtonMask
-              className="absolute items-center"
               style={{
+                bottom: "4.1%",
+                left: "34.25%",
                 // aspectRatio: 1,
-                width: "100%",
-                height: "100%",
+                width: "11%",
+                height: "6%",
               }}
+              variant={"default"}
+              size={"icon"}
+              className="absolute overflow-hidden  opacity-70 hover:opacity-75 flex justify-center rounded-full"
             >
-              <Image alt="dark mode" src={lightModePicture} />
-            </ButtonMask>
-          </Button>
+              <ButtonMask
+                className="absolute items-center"
+                style={{
+                  // aspectRatio: 1,
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <Image
+                  onLoad={() => {
+                    handleLoadedImagesCounting("img-" + 5);
+                  }}
+                  alt="dark mode"
+                  src={darkModePicture}
+                />
+              </ButtonMask>
+            </Button>
+          </Tooltip>
+          <Tooltip
+            title={
+              <div className="bg-green-foreground flex flex-col items-center">
+                <p className="xl:text-2xl">Light mode</p>
+                <Image
+                  className="rounded-full max-w-[33%]"
+                  alt="light mode"
+                  src={lightModePicture}
+                />
+              </div>
+            }
+          >
+            <Button
+              disabled={!isDarkMode}
+              onClick={() => {
+                toggleTheme(() => {
+                  setIsLoading(true);
+                  setIsDarkMode(false);
+
+                  setTimeout(() => {
+                    setIsLoading(false);
+                  }, 500);
+                });
+              }}
+              style={{
+                bottom: "4.1%",
+                right: "34.25%",
+                // aspectRatio: 1,
+                width: "11%",
+                height: "6%",
+              }}
+              variant={"default"}
+              size={"icon"}
+              className="absolute overflow-hidden  opacity-70 hover:opacity-75 flex justify-center rounded-full"
+            >
+              <ButtonMask
+                className="absolute items-center"
+                style={{
+                  // aspectRatio: 1,
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <Image
+                  onLoad={() => {
+                    handleLoadedImagesCounting("img-" + 6);
+                  }}
+                  alt="light mode"
+                  src={lightModePicture}
+                />
+              </ButtonMask>
+            </Button>
+          </Tooltip>
         </div>
       </div>
     </div>

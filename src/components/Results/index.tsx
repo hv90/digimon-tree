@@ -81,7 +81,6 @@ const Results: React.FC = () => {
 
     setTimeout(() => {
       if (localTheme && localTheme === "dark") {
-        console.log('hello dark?')
         toggleTheme(() => {
           setIsDarkMode(true);
         });
@@ -90,7 +89,7 @@ const Results: React.FC = () => {
           setIsDarkMode(false);
         });
       }
-      setIsLoading(false);
+      // setIsLoading(false);
     }, 500);
   }, []);
 
@@ -181,24 +180,27 @@ const Results: React.FC = () => {
           </div>
         )}
         <div className="w-full md:w-1/2 xl:w-1/4 h-1/2 md:h-full flex justify-center items-center select-none">
-          <Digivice
-            digimonResults={digimonResults}
-            evolutionFilter={filterEvolutionDirection}
-            onNextEvolutionClick={() => {
-              if (filterEvolutionDirection === "prior") {
-                setFilterEvolutionDirection("next");
-              }
-            }}
-            onPriorEvolutionClick={() => {
-              if (filterEvolutionDirection === "next") {
-                setFilterEvolutionDirection("prior");
-              }
-            }}
-            playerDivRef={playerDivRef}
-          />
-          {/* <div className="absolute w-full h-1/3 ">
-            <div className="w-full h-2/3" ref={playerDivRef} id="player" />
-          </div> */}
+          {isLoading ? (
+            <div className="animate-pulse w-full h-full">
+              <div className="bg-gray-700 h-full w-full"></div>
+            </div>
+          ) : (
+            <Digivice
+              digimonResults={digimonResults}
+              evolutionFilter={filterEvolutionDirection}
+              onNextEvolutionClick={() => {
+                if (filterEvolutionDirection === "prior") {
+                  setFilterEvolutionDirection("next");
+                }
+              }}
+              onPriorEvolutionClick={() => {
+                if (filterEvolutionDirection === "next") {
+                  setFilterEvolutionDirection("prior");
+                }
+              }}
+              playerDivRef={playerDivRef}
+            />
+          )}
         </div>
       </div>
       <div className="absolute md:bottom-0 w-full md:w-1/6 2xl:w-1/4 h-1/3 xl:h-1/2 flex items-start md:items-end select-none">

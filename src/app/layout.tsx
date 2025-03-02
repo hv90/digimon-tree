@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-blue-100 dark:bg-zinc-900 md:overflow-y-hidden`}
       >
         <div className="flex justify-items-center max-h-screen h-screen font-[family-name:var(--font-geist-sans)]">
-          <div className="w-full h-screen grid grid-rows-[minmax(150px,_200px)_1fr] px-8 items-center md:items-start">
+          <div className="w-full h-screen grid grid-rows-[minmax(150px,_200px)_1fr_100px] px-8 items-center md:items-start">
             {children}
           </div>
         </div>

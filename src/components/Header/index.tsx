@@ -1,15 +1,43 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 import logo from "@/assets/img/logo.png";
+import Link from "next/link";
+import { useDigimonContext } from "@/contexts/DigimonContext";
 
 const Header: React.FC<{ children?: ReactNode }> = ({ children }) => {
+  const { isLoading, setIsLoading } = useDigimonContext();
+
   return (
     <header className="w-full h-5/6 row-start-1 my-2 py-2 flex items-center">
-      <Image
-        style={{ width: "6%", borderRadius: "12%", marginRight: "2%" }}
-        src={logo}
-        alt="logo"
-      />
+      {isLoading ? (
+        <div className="animate-pulse w-[clamp(70px,6%,100px)] h-[58%] mr-[2%]">
+          <div className="bg-gray-100 rounded-[12%] h-full w-full"></div>
+        </div>
+      ) : (
+        <Link
+          href={"/"}
+          onClick={() => {
+            setIsLoading(true);
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 500);
+          }}
+          style={{
+            width: "clamp(70px,6%,100px)",
+            marginRight: "2%",
+          }}
+        >
+          <Image
+            style={{
+              width: "100%",
+              borderRadius: "12%",
+            }}
+            src={logo}
+            alt="logo"
+          />
+        </Link>
+      )}
+
       {children}
     </header>
   );
