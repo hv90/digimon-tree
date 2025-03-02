@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import Page from "./page";
 
 describe("Check if first render is ok", () => {
-  it("should render Test component", async () => {
+  it("should render Results component", async () => {
     render(<Page />);
     const loading = screen.getByText("Carregando...");
     expect(loading).toBeInTheDocument();

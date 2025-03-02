@@ -9,9 +9,15 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        portrait: { raw: "(max-width: 1024px) and (orientation: portrait)" },
+        landscape: { raw: "(max-width: 1024px) and (orientation: landscape)" },
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "green-foreground": "hsl(var(--green-foreground))",
+        "dark-foreground": "hsl(var(--dark-foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

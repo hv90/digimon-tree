@@ -2,13 +2,18 @@ export const toggleTheme = (callback?: () => void) => {
   if (callback) {
     callback();
   }
-  console.log(
-    "changing theme. contains dark? ",
+
+  const localTheme = localStorage.getItem("theme");
+
+  if (
+    !localTheme ||
+    localTheme === "dark" ||
     document.documentElement.classList.contains("dark")
-  );
-  if (document.documentElement.classList.contains("dark")) {
-    // document.documentElement.classList.toggle("dark");
+  ) {
+    localStorage.setItem("theme", "light");
+    document.documentElement.classList.remove("dark");
   } else {
+    localStorage.setItem("theme", "dark");
     document.documentElement.classList.add("dark");
   }
 };

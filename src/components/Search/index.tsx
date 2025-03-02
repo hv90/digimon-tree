@@ -42,10 +42,16 @@ const Search: React.FC<{
   return (
     <>
       <Autocomplete
-        className="w-full h-1/4"
+        className="w-full h-full flex items-center"
         options={digimonShortData.map((data) => data.name)}
         renderInput={(params) => {
-          return <TextField {...params} label="Digimon" />;
+          return (
+            <TextField
+              className="h-[clamp(36px,41px,46px)] md:h-[clamp(60px,calc(60%-8px),90px)]"
+              {...params}
+              label="Digimon"
+            />
+          );
         }}
         onChange={(_, value) => {
           const digimonId = digimonShortData.find(
@@ -65,6 +71,16 @@ const Search: React.FC<{
         sx={{
           ".MuiInputBase-root.MuiOutlinedInput-root": {
             background: "white",
+            height: "100%",
+            fontSize: {
+              xl: "1.5rem",
+            },
+          },
+          label: {
+            color: "hsl(var(--green-foreground))",
+            fontSize: {
+              xl: "1.2rem",
+            },
           },
         }}
       />
