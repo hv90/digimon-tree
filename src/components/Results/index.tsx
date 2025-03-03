@@ -18,7 +18,6 @@ const Results: React.FC = () => {
     isDarkMode,
     setEvolution,
     isLoading,
-    setIsLoading,
   } = useDigimonContext();
 
   const [filterEvolutionDirection, setFilterEvolutionDirection] = useState<
@@ -131,11 +130,16 @@ const Results: React.FC = () => {
                       return stack;
                     }, [] as TDigiVolution)
                     .map((evolution) => {
-                      const result = {
+                      const result: {
+                        id: number;
+                        image: string;
+                        label: string;
+                        shape: "circularImage"; // Explicit type for shape
+                      } = {
                         id: evolution.id,
                         image: evolution.image,
                         label: evolution.digimon,
-                        shape: "circularImage" as "circularImage",
+                        shape: "circularImage",
                       };
                       return result;
                     }),

@@ -3,27 +3,25 @@
 import { TDigimon } from "@/types/digimon";
 import { Autocomplete, TextField } from "@mui/material";
 import digimonShortData from "@/assets/digimon_short_data.json";
-import { useSearchParams, useRouter } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { useDigimonContext } from "@/contexts/DigimonContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { router } from "@/utils/router";
 import Query from "../Query";
 
 const Search: React.FC<{
   onSuccess?: (result: TDigimon) => void;
   onError?: () => void;
-}> = ({ onError, onSuccess }) => {
+}> = ({}) => {
   const {
     setDigimonResults,
-    digimonResults,
     digimonId,
     setDigimonId,
     currentDigimonName,
     setCurrentDigimonName,
-    isLoading,
     setIsLoading,
   } = useDigimonContext();
-  const id = useSearchParams()?.get("id");
+  // const id = useSearchParams()?.get("id");
 
   const [error, setError] = useState<Error | null>(null);
 

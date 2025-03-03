@@ -3,17 +3,17 @@ export const toggleTheme = (callback?: () => void) => {
     callback();
   }
 
-  const localTheme = localStorage.getItem("theme");
+  setTimeout(() => {
+    const localTheme = localStorage.getItem("theme");
 
-  if (
-    !localTheme ||
-    localTheme === "dark" ||
-    document.documentElement.classList.contains("dark")
-  ) {
-    localStorage.setItem("theme", "light");
-    document.documentElement.classList.remove("dark");
-  } else {
-    localStorage.setItem("theme", "dark");
-    document.documentElement.classList.add("dark");
-  }
+    if (
+      !localTheme ||
+      localTheme === "light" /*  &&
+      document.documentElement.classList.contains("dark") */
+    ) {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+  }, 500);
 };

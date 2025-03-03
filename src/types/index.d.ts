@@ -18,3 +18,5 @@ declare global {
     YT: typeof YT;
   }
 }
+
+export {}

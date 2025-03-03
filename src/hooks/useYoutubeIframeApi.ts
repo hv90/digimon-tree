@@ -1,9 +1,18 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import { RefObject, useCallback, useEffect, useState } from "react";
 
 export const useYouTubePlayer = (
   playerRef: RefObject<HTMLDivElement | null>
 ) => {
-  const [playerInstance, setPlayerInstance] = useState<any>(null);
+  const [playerInstance, setPlayerInstance] = useState<{
+    playVideoAt:  (...args: unknown[]) => unknown;
+    playVideo:  (...args: unknown[]) => unknown;
+    nextVideo:  (...args: unknown[]) => unknown;
+    previousVideo:  (...args: unknown[]) => unknown;
+    pauseVideo:  (...args: unknown[]) => unknown;
+    stopVideo:  (...args: unknown[]) => unknown;
+    mute:  (...args: unknown[]) => unknown;
+    unMute:  (...args: unknown[]) => unknown;
+  } | null>(null);
 
   const onYouTubeIframeAPIReady = useCallback(() => {
     if (playerRef.current && window.YT) {
@@ -18,12 +27,12 @@ export const useYouTubePlayer = (
               console.log("Player is ready");
               setPlayerInstance(player);
             },
-            onStateChange: (event: any) => {
+            onStateChange: (event: unknown) => {
               console.log("Player state changed", event);
             },
           },
         });
-      } catch (e) {
+      } catch {
         window.location.reload();
       }
     }
@@ -41,7 +50,6 @@ export const useYouTubePlayer = (
   }, []);
 
   const playPlaylist = (index?: number) => {
-    console.log("player instance: ", playerInstance);
     if (playerInstance) {
       if (typeof index === "number") {
         playerInstance.playVideoAt(index); // Reproduzir vídeo específico da playlist

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useDigimonContext } from "@/contexts/DigimonContext";
 
 const Header: React.FC<{ children?: ReactNode }> = ({ children }) => {
-  const { isLoading, setIsLoading } = useDigimonContext();
+  const { isLoading } = useDigimonContext();
 
   return (
     <header className="my-4 md:mt-0 w-full md:h-full row-start-1 flex items-center">

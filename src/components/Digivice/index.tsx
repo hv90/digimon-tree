@@ -57,7 +57,11 @@ const Digivice: React.FC<{
 
   const handleLoadedImagesCounting = (imageId: string) => {
     if (loadedImages.size < MAX_IMAGES_COUNT - 1) {
-      loadedImages.add(imageId);
+      setLoadedImages((prev) => {
+        prev.add(imageId);
+
+        return prev;
+      });
     } else {
       setIsLoading(false);
     }
@@ -576,6 +580,7 @@ const Digivice: React.FC<{
               disabled={isDarkMode}
               onClick={() => {
                 toggleTheme(() => {
+                  localStorage.setItem("theme", "dark");
                   setIsLoading(true);
                   setIsDarkMode(true);
 
@@ -629,6 +634,7 @@ const Digivice: React.FC<{
               disabled={!isDarkMode}
               onClick={() => {
                 toggleTheme(() => {
+                  localStorage.setItem("theme", "light");
                   setIsLoading(true);
                   setIsDarkMode(false);
 
