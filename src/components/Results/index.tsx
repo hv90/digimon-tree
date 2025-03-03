@@ -4,7 +4,7 @@ import { useDigimonContext } from "@/contexts/DigimonContext";
 import digimonShortData from "@/assets/digimon_short_data.json";
 import { router } from "@/utils/router";
 import { TDigiVolution } from "@/types/digimon";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Digivice from "../Digivice";
 import "./style.css";
 import { toggleTheme } from "@/utils/theme";
@@ -23,8 +23,6 @@ const Results: React.FC = () => {
   const [filterEvolutionDirection, setFilterEvolutionDirection] = useState<
     "prior" | "next"
   >("next");
-
-  const playerDivRef = useRef<HTMLDivElement>(null);
 
   const onClickHandler = (clickedNodeId: number) => {
     if (clickedNodeId) {
@@ -90,6 +88,7 @@ const Results: React.FC = () => {
       }
       // setIsLoading(false);
     }, 500);
+    console.log("rendered");
   }, []);
 
   return (
@@ -202,13 +201,12 @@ const Results: React.FC = () => {
                   setFilterEvolutionDirection("prior");
                 }
               }}
-              playerDivRef={playerDivRef}
             />
           )}
         </div>
       </div>
       <div className="absolute bottom-[-110px] md:bottom-0 w-full md:w-1/6 2xl:w-1/4 h-1/3 xl:h-1/2 flex items-start md:items-end select-none">
-        <div className="w-full h-2/3" ref={playerDivRef} id="player" />
+        <div className="w-full h-2/3" id="player" />
       </div>
     </div>
   );

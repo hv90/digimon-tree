@@ -4,12 +4,17 @@ import { TDigimon } from "@/types/digimon";
 import { useSearchParams } from "next/navigation";
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useState,
 } from "react";
 import digimonShortData from "@/assets/digimon_short_data.json";
+import { IPlayerState } from "@/hooks/useYoutubeIframeApi";
+
+type TDigiviceInfoFilter = "main" | "fields" | "description" | "skills";
 
 type TDigimonContext = {
   digimonResults?: TDigimon;
@@ -24,6 +29,16 @@ type TDigimonContext = {
   setEvolution: (a: { condition: string; digimon: string } | null) => void;
   isLoading: boolean;
   setIsLoading: (a: boolean) => void;
+  isPlaying: boolean;
+  setIsPlaying: (a: boolean) => void;
+  playerInstance: IPlayerState | null;
+  setPlayerInstance: (a: IPlayerState | null) => void;
+  musicCount: number;
+  setMusicCount: Dispatch<SetStateAction<number>>;
+  isSpeaking: boolean;
+  setIsSpeaking: (a: boolean) => void;
+  digiviceInfoFilter: TDigiviceInfoFilter;
+  setDigiviceInfoFilter: (a: TDigiviceInfoFilter) => void;
 };
 
 const DigimonContext = createContext<TDigimonContext | undefined>(undefined);
@@ -54,6 +69,16 @@ export const DigimonContextProvider = ({
     digimon: string;
   } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playerInstance, setPlayerInstance] = useState<IPlayerState | null>(
+    null
+  );
+
+  const [musicCount, setMusicCount] = useState(0);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const [digiviceInfoFilter, setDigiviceInfoFilter] =
+    useState<TDigiviceInfoFilter>("main");
 
   const id = useSearchParams()?.get("id");
 
@@ -83,6 +108,16 @@ export const DigimonContextProvider = ({
         setEvolution,
         isLoading,
         setIsLoading,
+        isPlaying,
+        setIsPlaying,
+        playerInstance,
+        setPlayerInstance,
+        digiviceInfoFilter,
+        setDigiviceInfoFilter,
+        isSpeaking,
+        setIsSpeaking,
+        musicCount,
+        setMusicCount,
       }}
     >
       {children}

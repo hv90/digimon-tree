@@ -16,7 +16,7 @@ import {
   Volume1,
   VolumeX,
 } from "lucide-react";
-import { RefObject, useState } from "react";
+import { useState } from "react";
 import { useYouTubePlayer } from "@/hooks/useYoutubeIframeApi";
 import { Fade, Tooltip } from "@mui/material";
 import { TDigimon } from "@/types/digimon";
@@ -26,32 +26,36 @@ import darkModePicture from "@/assets/img/Starmon.png";
 import { toggleTheme } from "@/utils/theme";
 
 const Digivice: React.FC<{
-  playerDivRef: RefObject<HTMLDivElement | null>;
   onNextEvolutionClick?: () => void;
   onPriorEvolutionClick?: () => void;
   evolutionFilter: string;
   digimonResults?: TDigimon;
 }> = ({
-  playerDivRef,
   onNextEvolutionClick,
   onPriorEvolutionClick,
   evolutionFilter,
   digimonResults,
 }) => {
-  const { playVideo, pauseVideo, nextVideo, previousVideo } =
-    useYouTubePlayer(playerDivRef);
+  const {
+    evolution,
+    setEvolution,
+    setIsDarkMode,
+    isDarkMode,
+    setIsLoading,
+    isPlaying,
+    setIsPlaying,
+    playerInstance,
+    isSpeaking,
+    setIsSpeaking,
+    musicCount,
+    setMusicCount,
+    digiviceInfoFilter,
+    setDigiviceInfoFilter,
+  } = useDigimonContext();
 
-  const { evolution, setEvolution, setIsDarkMode, isDarkMode, setIsLoading } =
-    useDigimonContext();
+  useYouTubePlayer();
 
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
-  const [musicCount, setMusicCount] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-
-  const [digiviceInfoFilter, setDigiviceInfoFilter] = useState<
-    "main" | "fields" | "description" | "skills"
-  >("main");
 
   const MAX_IMAGES_COUNT = 6;
 
@@ -112,34 +116,41 @@ const Digivice: React.FC<{
 
   const handlePlayPauseAction = () => {
     isSpeakingCheck();
-
-    if (isPlaying) {
-      setIsPlaying(false);
-      pauseVideo();
-    } else {
-      setIsPlaying(true);
-      playVideo();
+    if (playerInstance) {
+      if (isPlaying) {
+        console.log("is playing");
+        setIsPlaying(false);
+        playerInstance.pauseVideo();
+      } else {
+        console.log("is not playing");
+        setIsPlaying(true);
+        playerInstance.playVideo();
+      }
     }
   };
 
   const handlePreviousVideo = () => {
-    isSpeakingCheck();
+    if (playerInstance) {
+      isSpeakingCheck();
 
-    if (musicCount > 0) {
-      setMusicCount((before) => before - 1);
+      if (musicCount > 0) {
+        setMusicCount((before) => before - 1);
+      }
+      setIsPlaying(true);
+      playerInstance.previousVideo();
     }
-    setIsPlaying(true);
-    previousVideo();
   };
 
   const handleNextVideo = () => {
-    isSpeakingCheck();
+    if (playerInstance) {
+      isSpeakingCheck();
 
-    if (musicCount < 8) {
-      setMusicCount((before) => before + 1);
+      if (musicCount < 8) {
+        setMusicCount((before) => before + 1);
+      }
+      setIsPlaying(true);
+      playerInstance.nextVideo();
     }
-    setIsPlaying(true);
-    nextVideo();
   };
 
   return (
@@ -586,6 +597,7 @@ const Digivice: React.FC<{
 
                   setTimeout(() => {
                     setIsLoading(false);
+                    // setIsPlaying(false);
                   }, 500);
                 });
               }}
@@ -640,6 +652,7 @@ const Digivice: React.FC<{
 
                   setTimeout(() => {
                     setIsLoading(false);
+                    // setIsPlaying(false);
                   }, 500);
                 });
               }}
