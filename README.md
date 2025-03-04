@@ -1,6 +1,6 @@
 ![Demo Gif](./src/assets/demo/demo.gif)
 
-# Table of Contents
+# ![Logo](https://digimon-tree.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.534975c4.png&w=75&q=75) Table of Contents
 - [🔍 Motivation](#motivation)
 - [⚙️ Technologies in this project](#technologies-in-this-project)
 - [💻 Running the Project Locally](#running-the-project-locally)
