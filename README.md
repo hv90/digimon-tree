@@ -1,4 +1,4 @@
-![Demo Video](./src/assets/demo/demo.mp4)
+![Demo Gif](./src/assets/demo/demo.gif)
 
 # Table of Contents
 - [Motivation](#motivation)
